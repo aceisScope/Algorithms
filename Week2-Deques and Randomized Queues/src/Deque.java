@@ -168,21 +168,4 @@ public class Deque<Item> implements Iterable<Item> {
       }
     };
   }
-
-  /**
-   * unit testing (optional).
-   * @param args empty
-   */
-  public static void main(String[] args) {
-    Deque<Integer> deque = new Deque<Integer>();
-
-    deque.addLast(1);
-    deque.addLast(2);
-    deque.addFirst(5);
-    deque.addFirst(0);
-    StdOut.println(deque.removeFirst());
-    StdOut.println(deque.removeLast());
-    StdOut.println(deque.removeLast());
-    StdOut.println(deque.removeLast());
-  }
 }

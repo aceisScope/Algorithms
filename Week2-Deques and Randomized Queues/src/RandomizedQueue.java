@@ -1,7 +1,7 @@
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
-import java.util.NoSuchElementException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
 
@@ -14,17 +14,25 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     size = 0;
   }
 
-  // is the randomized queue empty?
+  /**
+   * is the randomized queue empty.
+   * @return true if the queue is empty
+   */
   public boolean isEmpty() {
     return (size == 0);
   }
 
-  // return the number of items on the randomized queue
+  /**
+   * return the number of items on the randomized queue.
+   * @return the size of the queue
+   */
   public int size()  {
     return size;
   }
 
-  // add the item
+  /**
+   * add the item.
+   */
   public void enqueue(Item item) {
     if (item == null) {
       throw new IllegalArgumentException();
@@ -36,7 +44,10 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     items[size++] = item;
   }
 
-  // remove and return a random item
+  /**
+   * remove a random item.
+   * @return the removed item
+   */
   public Item dequeue() {
     if (isEmpty()) {
       throw new NoSuchElementException();
@@ -56,7 +67,10 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     return item;
   }
 
-  // return a random item (but do not remove it)
+  /**
+   * return a random item (but do not remove it).
+   * @return the random item
+   */
   public Item sample() {
     if (isEmpty()) {
       throw new NoSuchElementException();
@@ -109,25 +123,5 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     public void remove() {
       throw new UnsupportedOperationException();
     }
-  }
-
-  // unit testing (optional)
-  public static void main(String[] args)  {
-    RandomizedQueue<Integer> rq = new RandomizedQueue<Integer> ();
-    rq.enqueue(1);
-    rq.enqueue(2);
-    rq.enqueue(3);
-    rq.enqueue(4);
-    rq.enqueue(5);
-    rq.enqueue(6);
-    StdOut.println("Size: " + rq.size());
-    StdOut.println(rq.dequeue());
-    StdOut.println("Size: " + rq.size());
-    Iterator<Integer> it = rq.iterator();
-    StdOut.println(it.next());
-    StdOut.println(it.next());
-    StdOut.println(it.next());
-    StdOut.println(it.next());
-    StdOut.println(it.next());
   }
 }
