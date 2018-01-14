@@ -2,7 +2,6 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -10,7 +9,10 @@ public class FastCollinearPoints {
 
   private ArrayList<LineSegment> lineSegments = new ArrayList<LineSegment>();
 
-  // finds all line segments containing 4 or more points
+  /**
+   * finds all line segments containing 4 points.
+   * @param points read from the input file
+   */
   public FastCollinearPoints(Point[] points) {
     if (points == null) {
       throw new IllegalArgumentException();
@@ -64,6 +66,10 @@ public class FastCollinearPoints {
     return lineSegments.toArray(new LineSegment[0]);
   }
 
+  /**
+   * Test.
+   * @param args name of input file
+   */
   public static void main(String[] args) {
     // read the n points from a file
     In in = new In(args[0]);

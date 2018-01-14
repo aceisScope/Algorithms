@@ -2,7 +2,6 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -63,6 +62,10 @@ public class BruteCollinearPoints {
     return lineSegments.toArray(new LineSegment[0]);
   }
 
+  /**
+   * Test.
+   * @param args name of input file
+   */
   public static void main(String[] args) {
     // read the n points from a file
     In in = new In(args[0]);
