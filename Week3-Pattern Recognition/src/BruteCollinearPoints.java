@@ -36,16 +36,16 @@ public class BruteCollinearPoints {
 
     for (int p = 0; p < copies.length - 3; p++) {
       for (int q = p + 1; q < copies.length - 2; q++) {
-        double slopeQtoP = copies[q].slopeTo(copies[p]);
+        double slopePtoQ = copies[p].slopeTo(copies[q]);
         for (int s = q + 1; s < copies.length - 1; s++) {
-          double slopeStoQ = copies[s].slopeTo(copies[q]);
-          if (slopeQtoP != slopeStoQ) {
+          double slopeQtoS = copies[q].slopeTo(copies[s]);
+          if (slopePtoQ != slopeQtoS) {
             continue;
           }
           for (int r = s + 1; r < copies.length; r++) {
-            double slopeRtoS = copies[r].slopeTo(copies[s]);
-            if (slopeRtoS == slopeQtoP) {
-              lineSegments.add(new LineSegment(copies[p], copies[s]));
+            double slopeStoR = copies[s].slopeTo(copies[r]);
+            if (slopeStoR == slopePtoQ) {
+              lineSegments.add(new LineSegment(copies[p], copies[r]));
             }
           }
         }
