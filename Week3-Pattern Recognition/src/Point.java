@@ -69,7 +69,7 @@ public class Point implements Comparable<Point> {
         } else if (this.x == that.x) {
           return Double.POSITIVE_INFINITY; // vertical
         } else {
-          return (double) (that.y - this.y) / (that.x - this.x);
+          return ((double) (that.y - this.y)) / (that.x - this.x);
         }
     }
 
@@ -87,9 +87,9 @@ public class Point implements Comparable<Point> {
      */
     public int compareTo(Point that) {
         /* YOUR CODE HERE */
-        int diffY = that.y - this.y;
+        int diffY = this.y - that.y;
         if (diffY == 0) {
-          return (that.x - this.x);
+          return (this.x - that.x);
         } else {
           return diffY;
         }
@@ -106,7 +106,7 @@ public class Point implements Comparable<Point> {
         return new Comparator<Point>() {
           @Override
           public int compare(Point o1, Point o2) {
-            double diffSlope = slopeTo(o1) - slopeTo(o2);
+            double diffSlope = Point.this.slopeTo(o1) - Point.this.slopeTo(o2);
             if (diffSlope > 0) {
               return 1;
             } else if (diffSlope < 0) {
