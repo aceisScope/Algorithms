@@ -27,6 +27,7 @@ public class BruteCollinearPoints {
     Point[] copies = Arrays.copyOf(points, points.length);
     Arrays.sort(copies);
 
+    // check duplicated points
     for (int i = 0; i < points.length - 1; i++) {
       if (copies[i].compareTo(copies[i + 1]) == 0) {
         throw new IllegalArgumentException();
