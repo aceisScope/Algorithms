@@ -164,16 +164,6 @@ public class Board {
 
   // unit tests
   public static void main(String[] args) {
-    int[][] blocks = {{8, 1, 3}, {4, 2, 0}, {7, 6, 5}};
-    Board a = new Board(blocks);
-    StdOut.println(a.dimension());
-    StdOut.println(a.hamming());
-    StdOut.println(a.manhattan());
-    StdOut.println(a);
-    StdOut.println(a.twin());
-    StdOut.println(a);
-    for (Board board: a.neighbors()) {
-      StdOut.println("neighbors:"+ board);
-    }
+
   }
 }
