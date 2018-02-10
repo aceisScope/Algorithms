@@ -1,4 +1,6 @@
-import java.util.Arrays;
+import edu.princeton.cs.algs4.Queue;
+import edu.princeton.cs.algs4.StdOut;
+
 
 public class Board {
   private int[][] blocks;
@@ -40,7 +42,7 @@ public class Board {
       for (int j = 0; j < dimension; j++) {
         if (blocks[i][j] != 0 && blocks[i][j] != i * dimension + j + 1) {
           int rowDistance = Math.abs(i - (blocks[i][j] - 1) / dimension);
-          int colDistance = Math.abs(j - (blocks[i][j] - 1) % dimension)
+          int colDistance = Math.abs(j - (blocks[i][j] - 1) % dimension);
           manhattan += rowDistance + colDistance;
         }
       }
@@ -101,7 +103,29 @@ public class Board {
 
   // all neighboring boards
   public Iterable<Board> neighbors() {
+    Queue<Board> neighbors = new Queue<Board>();
+    outerloop:
+    for (int i = 0; i < dimension; i++) {
+      for (int j = 0; j < dimension; j++) {
+        if (blocks[i][j] == 0) {
+          if (i > 0) {
+            neighbors.enqueue(new Board(swap(i, j, i - 1, j)));
+          }
+          if (i < dimension - 1) {
+            neighbors.enqueue(new Board(swap(i, j, i + 1, j)));
+          }
+          if (j > 0) {
+            neighbors.enqueue(new Board(swap(i, j, i, j - 1)));
+          }
+          if (j < dimension - 1) {
+            neighbors.enqueue(new Board(swap(i, j, i, j + 1)));
+          }
+          break outerloop;
+        }
+      }
+    }
 
+    return neighbors;
   }
 
   // string representation of this board (in the output format specified below)
@@ -140,6 +164,16 @@ public class Board {
 
   // unit tests
   public static void main(String[] args) {
-
+    int[][] blocks = {{8, 1, 3}, {4, 2, 0}, {7, 6, 5}};
+    Board a = new Board(blocks);
+    StdOut.println(a.dimension());
+    StdOut.println(a.hamming());
+    StdOut.println(a.manhattan());
+    StdOut.println(a);
+    StdOut.println(a.twin());
+    StdOut.println(a);
+    for (Board board: a.neighbors()) {
+      StdOut.println("neighbors:"+ board);
+    }
   }
 }
